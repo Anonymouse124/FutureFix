@@ -42,6 +42,8 @@ local function requesturl(url, bypass)
     return req.Body
 end 
 
+--shared.Future.entity = loadstring(game:HttpGet("https://raw.githubusercontent.com/7GrandDadPGN/VapeV4ForRoblox/main/Libraries/entityHandler.lua"))()
+
 -- AntiPreloadAsync:
 local suc, err = pcall(function()
     if not shared.AntiPreloadAsync then
@@ -77,7 +79,7 @@ local suc, err = pcall(function()
 
             oldPreloadAsync = hookfunction(CONTENTPROVIDER.PreloadAsync, function(tab) 
                 if not (type(tab)=='table' and table.find(tab, COREGUI)) then 
-                    return oldPreloadAsync(tab)
+                    return
                 end
                 
                 local returnTable = {}
@@ -344,8 +346,6 @@ if betterisfile("Future/configs/!SelectedConfigs/"..tostring(shared.FuturePlaceI
     GuiLibrary.CurrentConfig = readfile("Future/configs/!SelectedConfigs/"..tostring(shared.FuturePlaceId or game.PlaceId)..".txt") 
     configBox.Set(GuiLibrary.CurrentConfig, true)
     print("[Future] Detected config ",GuiLibrary.CurrentConfig," used last time!")
-else
-    print("[Future] uh idk man")
 end
 local clickGuiButton = OtherWindow.CreateOptionsButton({
     ["Name"] = "ClickGui",
